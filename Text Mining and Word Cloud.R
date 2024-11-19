@@ -62,3 +62,21 @@ set.seed(1234)
 wordcloud(words = d$word, freq = d$freq, min.freq = 1,
           max.words=200, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(8, "Dark2"))
+
+                               
+# Explore frequent terms and their associations
+
+# Find terms that appear at least 4 times in the corpus
+findFreqTerms(dtm, lowfreq = 4) # Returns terms that appear at least 4 times
+
+# Find terms associated with the word "freedom" with a correlation limit of 0.3
+findAssocs(dtm, terms = "freedom", corlimit = 0.3) # Find terms with correlation ≥ 0.3 with "freedom"
+
+# Display the top 10 frequent terms
+head(d, 10) # Print the first 10 terms with their frequencies
+
+# Bar plot to visualize the most frequent terms
+# Create a bar plot for the top 10 words and their frequencies
+barplot(d[1:10,]$freq, las = 2, names.arg = d[1:10,]$word, 
+        col = "lightblue", main = "Most frequent words", 
+        ylab = "Word frequencies") # Create a barplot with labels on the x-axis and y-axis as word frequency
